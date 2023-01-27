@@ -1,27 +1,23 @@
-package dev.courses.springdemo.assignments.service.dto;
+package dev.courses.springdemo.assignments.repository.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
+import javax.persistence.*;
 
 @Data
+@Entity
+@Table(name = "users")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
-    @Size(min = 3, max = 30)
     private String name;
-    @NotNull
-    @Positive
-    @Max(150)
     private Integer age;
-    @NotNull
-    @Min(50)
-    @Max(300)
     private Integer heightInCm;
 }
